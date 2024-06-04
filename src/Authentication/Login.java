@@ -11,13 +11,16 @@ import java.util.Scanner;
 
 public class Login {
     Scanner input = new Scanner(System.in);
-    private static String username;
+    private String username;
+    private String password;
 
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    private static String password;
+    public String getPassword() {
+        return password;
+    }
 
     public void checkDetails() {
         try (Connection connection = ConnectDB.connectDB();

@@ -28,8 +28,9 @@ public class Ticket {
     }
 
     public String getTrainName() {
-        System.out.print("Enter train name: ");
-        trainName = input.nextLine();
+        Random random = new Random();
+        int index = random.nextInt(trainNames.length);
+        trainName = trainNames[index];
         return trainName;
     }
 

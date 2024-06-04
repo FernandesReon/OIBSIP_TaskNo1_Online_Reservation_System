@@ -1,9 +1,6 @@
 import Authentication.Login;
-import ConnectivitynQueries.ConnectDB;
 import TicketReservationLogic.TicketLogics;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +13,7 @@ public class Main {
         System.out.println();
         login.checkDetails();
 
-        try (Connection connection = ConnectDB.connectDB()){
+        try{
             label:
             while (true){
                 System.out.println("Select the Operation");
@@ -39,7 +36,7 @@ public class Main {
                         TicketLogics.deleteData();
                         break;
                     case "4":
-                        System.out.println("Thank you!");
+                        System.out.println("Thank you! "+ login.getUsername()+" for using the service.");
                         break label;
                     default:
                         System.out.println("Invalid input.");
@@ -47,8 +44,8 @@ public class Main {
                 }
             }
         }
-        catch (SQLException e){
-            System.out.println("SQL Exception: " + e.getMessage());
+        catch (Exception e){
+            System.out.println("Exception: " + e.getMessage());
         }
     }
 }
